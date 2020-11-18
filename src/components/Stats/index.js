@@ -5,7 +5,7 @@ const Stats = ({ errors, cpm }) => {
   return (
     <div>
       <span>{`Typos ${errors}`}</span>
-      <span>{`  CMP ${cpm}`}</span>
+      <span>{`  CPM ${cpm}`}</span>
     </div>
   );
 }

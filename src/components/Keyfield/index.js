@@ -7,8 +7,7 @@ const Keyfield = ({ prompt }) => {
   const dispatch = useDispatch()
 
   const handleOnKeydown = e => {
-    console.log(e.key)
-    dispatch(inputCharAction(e.key))
+    dispatch(inputCharAction(e.key, new Date().getTime()))
   }
 
     return (

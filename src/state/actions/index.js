@@ -8,11 +8,12 @@ export const startSession = (prompt) => {
   }
 }
 
-export const inputChar = (char) => {
+export const inputChar = (char, timestamp) => {
   return {
     type: 'INPUT_CHAR',
     payload: {
-      char
+      char,
+      timestamp
     }
   }
 }

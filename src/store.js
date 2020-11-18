@@ -1,6 +1,6 @@
 import { compose, applyMiddleware, createStore } from 'redux';
 import logger from 'redux-logger';
-import appReducer from './reducers'
+import appReducer from './state/reducers'
 
 export default createStore(
     appReducer,

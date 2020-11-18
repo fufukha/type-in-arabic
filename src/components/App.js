@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import Keyfield from './Keyfield'
-import { useSelector, useDispatch } from 'react-redux';
-import { isSessionCompletedSelector } from '../state/selectors'
+import Stats from './Stats'
+import { useSelector, useDispatch } from 'react-redux'
+import {
+  errorsSelector,
+  cpmSelector,
+  isSessionCompletedSelector,
+ } from '../state/selectors'
 import { startSession as startSessionAction } from '../state/actions'
 
 const App = () => {
@@ -9,7 +14,9 @@ const App = () => {
   const prompt = "jkjkjk"
 
   const dispatch = useDispatch()
-  const isSessionCompleted = useSelector(isSessionCompletedSelector)
+  const errors = useSelector(errorsSelector)
+  const cpm = useSelector(cpmSelector)
+  const isTaskCompleted = useSelector(isSessionCompletedSelector)
 
   const handleOnClick = () => {
     setIsStarted(true)
@@ -18,13 +25,23 @@ const App = () => {
 
   return (
     <>
-      {
-        isSessionCompleted ?
-          <div>Good Job</div> :
-          isStarted ?
-            <Keyfield prompt={prompt} /> :
-            <button onClick={handleOnClick}>Start</button>
-      }
+      {isStarted && !isTaskCompleted && (
+        <>
+          <Stats errors={errors} cpm={cpm}/>
+          <Keyfield prompt={prompt} />
+        </>
+      )}
+
+      {!isStarted && (
+        <button onClick={handleOnClick}>Start</button>
+      )}
+
+      {isTaskCompleted && isStarted && (
+        <>
+          <div>Task completed</div>
+          <Stats errors={errors} cpm={cpm}/>
+        </>
+      )}
     </>
   );
 }

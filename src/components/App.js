@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Keyfield from './Keyfield'
 import { useSelector, useDispatch } from 'react-redux';
-import isSessionCompletedSelector from '../state/selectors'
+import { isSessionCompletedSelector } from '../state/selectors'
 import { startSession as startSessionAction } from '../state/actions'
 
 const App = () => {
@@ -19,12 +19,11 @@ const App = () => {
   return (
     <>
       {
-        isStarted && !isSessionCompleted ?
-        <Keyfield prompt={prompt} /> :
-        <button onClick={handleOnClick}>Start</button>
-      }
-      {
-        isSessionCompleted && <div>Good Job</div>
+        isSessionCompleted ?
+          <div>Good Job</div> :
+          isStarted ?
+            <Keyfield prompt={prompt} /> :
+            <button onClick={handleOnClick}>Start</button>
       }
     </>
   );

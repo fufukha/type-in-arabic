@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        hello_world: './src/hello_world.js'
+        index: './src/index.js'
     },
     output: {
         filename: '[name].js',
@@ -54,9 +54,9 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            filename: 'hello_world.html',
-            chunks: ['hello_world'],
-            title: 'Hello world',
+            filename: 'index.html',
+            chunks: ['index'],
+            title: 'Type in Arabic',
             meta: {
                 viewpoint: 'width=device-width, initial-scale=1',
                 charset: 'utf-8'

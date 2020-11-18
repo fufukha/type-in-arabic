@@ -1,9 +1,9 @@
 import { compose, applyMiddleware, createStore } from 'redux';
 import logger from 'redux-logger';
-import rootReducer from './reducers';
+import appReducer from './reducers'
 
 export default createStore(
-    rootReducer,
+    appReducer,
     compose(
         applyMiddleware(logger),
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

@@ -12,14 +12,13 @@ const isEndSession = (index, prompt) => index === prompt.length
 
 const appReducer = (state=initialState, action) => {
   const { type, payload } = action
-  const { index, errors, prompt, lastCharAt } = state
+  const { startTime, index, errors, prompt, lastCharAt } = state
 
   switch(type) {
     case 'START_SESSION':
       return {
         ...state,
         prompt: payload.prompt,
-        startTime: payload.time
       }
 
     case 'INPUT_CHAR': {
@@ -30,6 +29,7 @@ const appReducer = (state=initialState, action) => {
         index: isMatching ? index + 1 : index,
         errors: isMatching || isEndSession(index, prompt) ? errors : errors + 1,
         lastCharAt: isMatching ? payload.timestamp : lastCharAt,
+        startTime: startTime === null ? payload.timestamp : startTime,
         char: payload.char
       }
     }

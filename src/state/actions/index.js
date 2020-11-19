@@ -2,7 +2,6 @@ export const startSession = (prompt) => {
   return {
     type: 'START_SESSION',
     payload: {
-      time: new Date().getTime(),
       prompt
     }
   }

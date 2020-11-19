@@ -28,7 +28,8 @@ export const getQwertyData = () => {
     if(zone3.includes(key)) return 3
     if(zone4.includes(key)) return 4
     if(zone5.includes(key)) return 5
-    return 6
+    if(key === ' ') return 6
+    return 7
   }
 
   const getValue = key => {

@@ -5,7 +5,6 @@ import styles from './keyboard.css'
 
 const Keyboard = () => {
   const qwerty = getQwertyData()
-  console.log(qwerty)
 
   const keys = qwerty.map((data, i) => (
       <Key key={i} data={data} />

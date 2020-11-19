@@ -16,3 +16,5 @@ export const cpmSelector = state => {
 }
 
 export const charSelector = state => state.char
+
+export const indexSelector = state => state.index

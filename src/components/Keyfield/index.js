@@ -18,6 +18,7 @@ const Keyfield = ({ prompt }) => {
 
 
   const handleOnKeydown = e => {
+    if(e.key === ' ') e.preventDefault()
     dispatch(inputCharAction(e.key, new Date().getTime()))
   }
 

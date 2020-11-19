@@ -3,10 +3,6 @@
 
 .key {
   display: flex;
-  align-items: center;
-  grid-column: auto / span 4;
-  justify-content: center;
-  align-items: center;
   margin: 1.5px;
   padding: 5px 10px;
   border-radius: 5px;
@@ -23,6 +19,10 @@
 .key[dataLang = 'ar'] {
   font-family: 'Markazi Text', serif;
   font-size: 1em;
+}
+
+.key_sm {
+  grid-column: auto / span 4;
 }
 
 .key_med {
@@ -59,11 +59,30 @@
   align-items: flex-end;
 }
 
-/* .key_blank {
-  background: #e5e7ec;
-  border: none;
-  box-shadow: none;
-} */
+.key_centerAlign {
+  justify-content: center;
+  align-items: center;
+}
+
+.key_zone1 {
+  background-color: orange;
+}
+
+.key_zone2 {
+  background-color: blue;
+}
+
+.key_zone3 {
+  background-color: red;
+}
+
+.key_zone4 {
+  background-color: purple;
+}
+
+.key_zone5 {
+  background-color: yellow;
+}
 
 @keyframes pressed_fade {
   0% {border-color: rgba(0, 128, 0, 1)}

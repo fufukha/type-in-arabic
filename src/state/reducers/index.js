@@ -3,7 +3,8 @@ const initialState = {
   errors: 0,
   prompt: null,
   index: 0,
-  lastCharAt: null
+  lastCharAt: null,
+  char: null
 }
 
 const isCharMatch = (char, index, prompt) => char === prompt[index]
@@ -28,7 +29,8 @@ const appReducer = (state=initialState, action) => {
         ...state,
         index: isMatching ? index + 1 : index,
         errors: isMatching || isEndSession(index, prompt) ? errors : errors + 1,
-        lastCharAt: isMatching ? payload.timestamp : lastCharAt
+        lastCharAt: isMatching ? payload.timestamp : lastCharAt,
+        char: payload.char
       }
     }
 

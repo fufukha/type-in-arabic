@@ -14,3 +14,5 @@ export const cpmSelector = state => {
   const minutes = (lastCharAt - startTime) / 60000
   return index / minutes
 }
+
+export const charSelector = state => state.char

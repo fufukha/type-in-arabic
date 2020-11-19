@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import Keyfield from './Keyfield'
+import Keyboard from './Keyboard'
 import Stats from './Stats'
 import { useSelector, useDispatch } from 'react-redux'
 import {
@@ -11,7 +12,7 @@ import { startSession as startSessionAction } from '../state/actions'
 
 const App = () => {
   const [ isStarted, setIsStarted ] = useState(false)
-  const prompt = "jkjkjk"
+  const prompt = 'نتنت'
 
   const dispatch = useDispatch()
   const errors = useSelector(errorsSelector)
@@ -29,6 +30,7 @@ const App = () => {
         <>
           <Stats errors={errors} cpm={cpm}/>
           <Keyfield prompt={prompt} />
+          <Keyboard />
         </>
       )}
 

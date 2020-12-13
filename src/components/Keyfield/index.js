@@ -19,7 +19,12 @@ const Keyfield = ({ prompt }) => {
 
   const handleOnKeydown = e => {
     if(e.key === ' ') e.preventDefault()
-    dispatch(inputCharAction(e.key, new Date().getTime()))
+    
+    if(/^[a-z]$/.test(e.key)) {
+      alert('Use Arabic Keyboard')
+    } else {
+      dispatch(inputCharAction(e.key, new Date().getTime()))
+    }
   }
 
   useEffect(() => {

@@ -33,6 +33,9 @@ const appReducer: Reducer<LevelState, AppActions> = (
           char: payload.char
         }
       }
+
+      default:
+        return state
   }
 }
 

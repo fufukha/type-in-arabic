@@ -2,3 +2,5 @@ node_modules/
 dist/
 yarn-debug.log*
 yarn-error.log*
+.eslintcache
+.vscode

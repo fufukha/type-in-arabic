@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Markazi+Text&display=swap');
 
-.keyfield_container {
+.keyfieldContainer {
   width: 833px; /*tempory*/
   height: 80px;
   display: flex;
@@ -20,7 +20,7 @@
   51%,100% {border-left-color: rgba(0, 0, 0, 0)}
 }
 
-.keyfield_container span {
+.keyfieldContainer span {
   color: lightgrey;
   border-left: 1px black solid;
   animation-name: cursor;

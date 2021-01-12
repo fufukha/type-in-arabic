@@ -1,17 +1,20 @@
-import React from "react";
-import PropTypes from 'prop-types';
+import { KeyData } from './key-types'
 import { useSelector } from 'react-redux'
 import { charSelector } from '../../state/selectors'
 import classnames from 'classnames'
-import styles from './key.css'
+import styles from "./Key.module.css";
 
-const Key = ({ data }) => {
+type KeyProps ={
+  data: KeyData
+}
+
+const Key: React.FC<KeyProps> = ({ data }) => {
   const pressedKey = useSelector(charSelector)
   const { size, align, value, keyName, lang, zone } = data
 
   return (
     <div
-      datalang={lang}
+      lang={lang}
       className={classnames( styles.key,
         styles[`key_${size}`],
         styles[`key_${align}Align`],
@@ -23,8 +26,4 @@ const Key = ({ data }) => {
   );
 }
 
-Key.propTypes = {
-  data: PropTypes.object.isRequired
-};
-
-export default Key;
+export default Key

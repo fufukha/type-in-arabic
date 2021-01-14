@@ -13,5 +13,5 @@ export const initialLevelState: LevelState = {
   prompt: null,
   index: 0,
   lastCharAt: null,
-  char: null
+  char: null,
 }

@@ -2,9 +2,9 @@ import { KeyData } from './key-types'
 import { useSelector } from 'react-redux'
 import { charSelector } from '../../state/selectors'
 import classnames from 'classnames'
-import styles from "./Key.module.css";
+import styles from './Key.module.css'
 
-type KeyProps ={
+type KeyProps = {
   data: KeyData
 }
 
@@ -15,15 +15,17 @@ const Key: React.FC<KeyProps> = ({ data }) => {
   return (
     <div
       lang={lang}
-      className={classnames( styles.key,
+      className={classnames(
+        styles.key,
         styles[`key_${size}`],
         styles[`key_${align}Align`],
         styles[`key_zone${zone}`],
         { [styles.pressed]: keyName === pressedKey }
-    )}>
+      )}
+    >
       {value}
     </div>
-  );
+  )
 }
 
 export default Key

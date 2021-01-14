@@ -1,7 +1,3 @@
-# /node_modules/* and /bower_components/* in the project root are ignored by default
-
-/dist/*
-/webpack/*
 
 # dependencies
 /node_modules
@@ -13,6 +9,10 @@
 
 # production
 /build
+
+# Ignore artifacts:
+build
+coverage
 
 # misc
 .DS_Store

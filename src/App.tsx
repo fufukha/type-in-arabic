@@ -27,7 +27,7 @@ const App: React.FC = () => {
     <>
       {isStarted && !isTaskCompleted && (
         <>
-          <Stats errors={0} cpm={cpm} />
+          <Stats errors={errors} cpm={cpm} />
           <Keyfield />
           <Keyboard />
         </>

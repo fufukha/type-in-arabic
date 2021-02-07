@@ -5,47 +5,67 @@ import { promptSelector, indexSelector } from '../../state/selectors'
 import styles from './Keyfield.module.css'
 
 const Keyfield: React.FC = () => {
-	const dispatch = useDispatch()
-	const index = useSelector(indexSelector)
-	const prompt = useSelector(promptSelector)!
-	let ignoreKeystroke = false
+  const dispatch = useDispatch()
+  const index = useSelector(indexSelector)
+  const prompt = useSelector(promptSelector)!
 
-	const input = (
-		<>
-			<span>{prompt.substring(0, index)}</span>
-			{prompt.substring(index)}
-		</>
-	)
+  const input = (
+    <>
+      <span>{prompt.substring(0, index)}</span>
+      {prompt.substring(index)}
+    </>
+  )
 
-	const handleOnKeydown = (e: KeyboardEvent | React.KeyboardEvent) => {
-		if (e.key === ' ') e.preventDefault()
+  const isArabic = (key: string) => {
+    const keyUtf16 = key.codePointAt(0)!
+    if (
+			(keyUtf16 >= 1536 && keyUtf16 <= 1791) ||
+			(keyUtf16 >= 43 && keyUtf16 <= 46) ||
+			keyUtf16 === 61 ||
+			keyUtf16 === 92 ||
+			keyUtf16 === 33 ||
+      keyUtf16 === 124
+    ) {
+      return true
+    }
+    return false
+  }
 
-		if (/^[a-z]$/.test(e.key) && !ignoreKeystroke) {
-			alert('Use Arabic Keyboard')
-			ignoreKeystroke = true
-		} else if (!ignoreKeystroke) {
-			dispatch(inputCharAction(e.key, new Date().getTime()))
-		} else if (ignoreKeystroke) {
-			ignoreKeystroke = false
-		}
-	}
+  const isSystemEditKey = (key: string) => {
+    const systemEditKeys = [
+      'Alt',
+      'Backspace',
+      'CapsLock',
+      'Control',
+      'Enter',
+      'Meta',
+      'Shift',
+      'Tab',
+      ' ',
+    ]
+    return systemEditKeys.includes(key)
+  }
 
-	useEffect(() => {
-		document.addEventListener('keydown', (e: KeyboardEvent) =>
-			handleOnKeydown(e)
-		)
-		return () =>
-			document.removeEventListener('keydown', (e) => handleOnKeydown(e))
-	})
+  const handleOnKeydown = (e: KeyboardEvent | React.KeyboardEvent) => {
+    if (e.key === ' ') e.preventDefault()
 
-	return (
-		<div
-			className={styles.keyfieldContainer}
-			onKeyDown={(e) => handleOnKeydown(e)}
-		>
-			<div>{input}</div>
-		</div>
-	)
+    if (isArabic(e.key) || isSystemEditKey(e.key)) {
+      dispatch(inputCharAction(e.key, new Date().getTime()))
+    } else {
+      alert('Are you sure you are using an Arabic Keyboard? Switch now before pressing OK')
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleOnKeydown)
+    return () => document.removeEventListener('keydown', handleOnKeydown)
+  })
+
+  return (
+    <div className={styles.keyfieldContainer} onKeyDown={handleOnKeydown}>
+      <div>{input}</div>
+    </div>
+  )
 }
 
 export default Keyfield

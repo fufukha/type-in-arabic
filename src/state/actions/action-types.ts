@@ -6,7 +6,7 @@ export const INPUT_CHAR = 'INPUT_CHAR'
 export interface StartSessionAction extends Action {
   type: typeof START_SESSION
   payload: {
-    prompt: string
+    levelsData: string[]
   }
 }
 

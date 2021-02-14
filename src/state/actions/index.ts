@@ -5,13 +5,13 @@ import {
   StartSessionAction,
   InputCharAction,
 } from './action-types'
+import * as data from '../../mocks/levels.json'
 
 export const startSession: ActionCreator<StartSessionAction> = () => {
-  const prompt = 'نتنت'
   return {
     type: START_SESSION,
     payload: {
-      prompt,
+      levelsData: data.levels
     },
   }
 }

@@ -1,16 +1,18 @@
 export type LevelState = {
+  level: number | null
+  levelsData: string[]
   startTime: number | null
   errors: number
-  prompt: string | null
   index: number
   lastCharAt: number | null
   char: string | null
 }
 
 export const initialLevelState: LevelState = {
+  level: null,
+  levelsData: [],
   startTime: null,
   errors: 0,
-  prompt: null,
   index: 0,
   lastCharAt: null,
   char: null,

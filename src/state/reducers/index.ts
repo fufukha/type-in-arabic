@@ -8,8 +8,8 @@ import {
   AppActions,
 } from '../actions/action-types'
 
-const isCharMatch = (char: string, index: number, prompt: string) =>
-  char === prompt[index]
+const isCharMatch = (char: string, index: number, prompt: string) => char === prompt[index]
+
 const isEndSession = (index: number, prompt: string) => index === prompt.length
 
 const appReducer: Reducer<LevelState, AppActions> = (
@@ -17,18 +17,20 @@ const appReducer: Reducer<LevelState, AppActions> = (
   action: AppActions
 ) => {
   const { type } = action
-  const { startTime, index, errors, prompt, lastCharAt } = state
+  const { startTime, index, errors, level, levelsData, lastCharAt } = state
 
   switch (type) {
     case START_SESSION:
       const { payload } = action as StartSessionAction
       return {
         ...state,
-        prompt: payload.prompt,
+        level: level === null ? 0 : level, 
+        levelsData: payload.levelsData
       }
 
     case INPUT_CHAR: {
       const { payload } = action as InputCharAction
+      const prompt = levelsData[level!]
       const isMatching = isCharMatch(payload.char, index, prompt!)
 
       return {

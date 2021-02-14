@@ -1,14 +1,23 @@
 import { LevelState } from '../level-state'
 
 export const isSessionCompletedSelector = (state: LevelState) => {
-  if(state.prompt ) return state.index === state.prompt.length
+  const { levelsData, level, index } = state
+
+  if(level === null) return false 
+
+  const prompt = levelsData[level!]
+
+  return index === prompt.length
 }
 
-export const promptSelector = (state: LevelState) => state.prompt
+export const promptSelector = (state: LevelState) => {
+  const { levelsData, level } = state
+  return levelsData[level!]
+}
 
 export const errorsSelector = (state: LevelState) => state.errors
 
-export const startTimeSelector = (state: LevelState) => state.startTime
+export const startTimeSelector = (state: LevelState) => state.startTime!
 
 export const cpmSelector = (state: LevelState) => {
   const { startTime, lastCharAt, index } = state

@@ -8,7 +8,10 @@ import {
   cpmSelector,
   isSessionCompletedSelector,
 } from './state/selectors'
-import { startSession as startSessionAction } from './state/actions'
+import { 
+  startSession as startSessionAction,
+  nextLevel,
+ } from './state/actions'
 
 const App: React.FC = () => {
   const [isStarted, setIsStarted] = useState(false)
@@ -18,13 +21,22 @@ const App: React.FC = () => {
   const cpm = useSelector(cpmSelector)
   const isTaskCompleted = useSelector(isSessionCompletedSelector)
 
-  const startLevelHandler = () => {
+  const startLevelHandler = (e: MouseEvent | React.MouseEvent) => {
     setIsStarted(true)
     dispatch(startSessionAction())
   }
 
+  const nextLevelHandler = (e: MouseEvent | React.MouseEvent) => {
+    e.preventDefault()
+    dispatch(nextLevel())
+  }
+
   return (
     <>
+      {!isStarted && !isTaskCompleted && (
+        <button onClick={startLevelHandler}>START</button>
+      )}
+
       {isStarted && !isTaskCompleted && (
         <>
           <Stats errors={errors} cpm={cpm} />
@@ -33,12 +45,12 @@ const App: React.FC = () => {
         </>
       )}
 
-      {!isStarted && <button onClick={startLevelHandler}>Start</button>}
-
-      {isTaskCompleted && isStarted && (
+      {isTaskCompleted && (
         <>
           <div>Task completed</div>
           <Stats errors={errors} cpm={cpm} />
+          <button onClick={startLevelHandler}>REDO</button>
+          <button onClick={nextLevelHandler}>NEXT</button>
         </>
       )}
     </>

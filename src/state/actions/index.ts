@@ -2,8 +2,10 @@ import { ActionCreator } from 'redux'
 import {
   START_SESSION,
   INPUT_CHAR,
+  NEXT_LEVEL,
   StartSessionAction,
   InputCharAction,
+  NextLevelAction,
 } from './action-types'
 import * as data from '../../mocks/levels.json'
 
@@ -26,5 +28,11 @@ export const inputChar: ActionCreator<InputCharAction> = (
       char,
       timestamp,
     },
+  }
+}
+
+export const nextLevel: ActionCreator<NextLevelAction> = () => {
+  return {
+    type: NEXT_LEVEL
   }
 }

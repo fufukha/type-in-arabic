@@ -3,6 +3,7 @@ import { initialLevelState, LevelState } from '../level-state'
 import {
   START_SESSION,
   INPUT_CHAR,
+  NEXT_LEVEL,
   StartSessionAction,
   InputCharAction,
   AppActions,
@@ -18,12 +19,13 @@ const appReducer: Reducer<LevelState, AppActions> = (
 ) => {
   const { type } = action
   const { startTime, index, errors, level, levelsData, lastCharAt } = state
+  let prompt = level !== null ? levelsData[level!] : undefined
 
   switch (type) {
     case START_SESSION:
       const { payload } = action as StartSessionAction
       return {
-        ...state,
+        ...initialLevelState,
         level: level === null ? 0 : level, 
         levelsData: payload.levelsData
       }
@@ -41,6 +43,16 @@ const appReducer: Reducer<LevelState, AppActions> = (
         lastCharAt: isMatching ? payload.timestamp : lastCharAt,
         startTime: startTime === null ? payload.timestamp! : startTime,
         char: payload.char,
+      }
+    }
+
+    case NEXT_LEVEL: {
+      const isLastLevel = level === levelsData.length - 1
+
+      return {
+        ...initialLevelState,
+        levelsData,
+        level: isEndSession(index!, prompt!) && !isLastLevel ? level! + 1 : level
       }
     }
 

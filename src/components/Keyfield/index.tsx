@@ -7,7 +7,7 @@ import styles from './Keyfield.module.css'
 const Keyfield: React.FC = () => {
   const dispatch = useDispatch()
   const index = useSelector(indexSelector)
-  const prompt = useSelector(promptSelector)!
+  const prompt = useSelector(promptSelector)
 
   const input = (
     <>

@@ -9,7 +9,8 @@ import {
   AppActions,
 } from '../actions/action-types'
 
-const isCharMatch = (char: string, index: number, prompt: string) => char === prompt[index]
+const isCharMatch = (char: string, index: number, prompt: string) =>
+  char === prompt[index]
 
 const isEndSession = (index: number, prompt: string) => index === prompt.length
 
@@ -24,35 +25,37 @@ const appReducer: Reducer<LevelState, AppActions> = (
   switch (type) {
     case START_SESSION:
       const { payload } = action as StartSessionAction
+      const { level, levelsData } = payload
       return {
         ...initialLevelState,
-        level: level === null ? 0 : level, 
-        levelsData: payload.levelsData
+        level,
+        levelsData,
       }
 
     case INPUT_CHAR: {
       const { payload } = action as InputCharAction
-      const prompt = levelsData[level!]
-      const isMatching = isCharMatch(payload.char, index, prompt!)
+      const { timestamp, char } = payload
+      const isMatching = isCharMatch(char, index, prompt!)
 
       return {
         ...state,
         index: isMatching ? index + 1 : index,
         errors:
           isMatching || isEndSession(index, prompt!) ? errors : errors + 1,
-        lastCharAt: isMatching ? payload.timestamp : lastCharAt,
-        startTime: startTime === null ? payload.timestamp! : startTime,
-        char: payload.char,
+        lastCharAt: isMatching ? timestamp : lastCharAt,
+        startTime: startTime === null ? timestamp : startTime,
+        char,
       }
     }
 
     case NEXT_LEVEL: {
+      const { level, levelsData } = state
       const isLastLevel = level === levelsData.length - 1
 
       return {
         ...initialLevelState,
         levelsData,
-        level: isEndSession(index!, prompt!) && !isLastLevel ? level! + 1 : level
+        level: isLastLevel ? level : level! + 1,
       }
     }
 

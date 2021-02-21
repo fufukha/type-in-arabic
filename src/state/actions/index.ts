@@ -9,11 +9,14 @@ import {
 } from './action-types'
 import * as data from '../../mocks/levels.json'
 
-export const startSession: ActionCreator<StartSessionAction> = () => {
+export const startSession: ActionCreator<StartSessionAction> = (
+  level: number
+) => {
   return {
     type: START_SESSION,
     payload: {
-      levelsData: data.levels
+      level,
+      levelsData: data.levels,
     },
   }
 }
@@ -33,6 +36,6 @@ export const inputChar: ActionCreator<InputCharAction> = (
 
 export const nextLevel: ActionCreator<NextLevelAction> = () => {
   return {
-    type: NEXT_LEVEL
+    type: NEXT_LEVEL,
   }
 }

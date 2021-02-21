@@ -7,6 +7,7 @@ export const NEXT_LEVEL = 'NEXT_LEVEL'
 export interface StartSessionAction extends Action {
   type: typeof START_SESSION
   payload: {
+    level: number
     levelsData: string[]
   }
 }

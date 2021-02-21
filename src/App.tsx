@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Keyfield from './components/Keyfield/index'
 import Keyboard from './components/Keyboard/index'
 import Stats from './components/Stats/index'
@@ -7,6 +6,7 @@ import {
   errorsSelector,
   cpmSelector,
   isSessionCompletedSelector,
+  hasStartedSelector,
 } from './state/selectors'
 import { 
   startSession as startSessionAction,
@@ -14,15 +14,13 @@ import {
  } from './state/actions'
 
 const App: React.FC = () => {
-  const [isStarted, setIsStarted] = useState(false)
-
   const dispatch = useDispatch()
   const errors = useSelector(errorsSelector)
   const cpm = useSelector(cpmSelector)
   const isTaskCompleted = useSelector(isSessionCompletedSelector)
+  const hasStarted = useSelector(hasStartedSelector)
 
   const startLevelHandler = (e: MouseEvent | React.MouseEvent) => {
-    setIsStarted(true)
     dispatch(startSessionAction())
   }
 
@@ -33,11 +31,11 @@ const App: React.FC = () => {
 
   return (
     <>
-      {!isStarted && !isTaskCompleted && (
-        <button onClick={startLevelHandler}>START</button>
+      {!hasStarted && !isTaskCompleted && (
+        <button onClick={initialStartHandler}>START</button>
       )}
 
-      {isStarted && !isTaskCompleted && (
+      {hasStarted && !isTaskCompleted && (
         <>
           <Stats errors={errors} cpm={cpm} />
           <Keyfield />

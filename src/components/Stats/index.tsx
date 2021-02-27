@@ -1,6 +1,7 @@
 type StatsProps = {
   errors: number
   cpm: number
+  isNextLevelDisabled: boolean
   redoLevelHandler: (e: MouseEvent | React.MouseEvent) => void
   nextLevelHandler: (e: MouseEvent | React.MouseEvent) => void
 }
@@ -8,6 +9,7 @@ type StatsProps = {
 const Stats: React.FC<StatsProps> = ({
   errors,
   cpm,
+  isNextLevelDisabled,
   redoLevelHandler,
   nextLevelHandler,
 }) => {

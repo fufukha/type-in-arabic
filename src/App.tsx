@@ -24,6 +24,13 @@ const App: React.FC = () => {
     LAST_LEVEL_REACHED = 'lastLevelReached',
   }
 
+  enum StatsThreshold {
+    cpm = 150,
+    errors = 5,
+  }
+
+  const hasMetThresHold = cpm > StatsThreshold.cpm && errors < StatsThreshold.errors
+
   const initialStartHandler = (e: MouseEvent | React.MouseEvent) => {
     e.preventDefault()
     const lastLevel = localStorage.getItem(Local.LAST_LEVEL_REACHED)
@@ -67,6 +74,7 @@ const App: React.FC = () => {
           cpm={cpm}
           redoLevelHandler={redoLevelHandler}
           nextLevelHandler={nextLevelHandler}
+          isNextLevelDisabled={!hasMetThresHold}
         />
       )}
     </>

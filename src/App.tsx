@@ -55,19 +55,19 @@ const App: React.FC = () => {
 
       {hasStarted && !isTaskCompleted && (
         <>
-          <Stats errors={errors} cpm={cpm} />
+          <p>{`errors = ${errors} CPM = ${cpm}`}</p>
           <Keyfield />
           <Keyboard />
         </>
       )}
 
       {isTaskCompleted && (
-        <>
-          <div>Task completed</div>
-          <Stats errors={errors} cpm={cpm} />
-          <button onClick={redoLevelHandler}>REDO</button>
-          <button onClick={nextLevelHandler}>NEXT</button>
-        </>
+        <Stats
+          errors={errors}
+          cpm={cpm}
+          redoLevelHandler={redoLevelHandler}
+          nextLevelHandler={nextLevelHandler}
+        />
       )}
     </>
   )

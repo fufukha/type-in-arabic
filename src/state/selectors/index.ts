@@ -26,7 +26,7 @@ export const cpmSelector = (state: LevelState) => {
   if (startTime === lastCharAt) return 0
 
   const minutes = (lastCharAt! - startTime!) / 60000
-  return index / minutes
+  return Math.floor(index / minutes)
 }
 
 export const charSelector = (state: LevelState) => state.char

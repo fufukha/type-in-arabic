@@ -24,20 +24,6 @@ const App: React.FC = () => {
     LAST_LEVEL_REACHED = 'lastLevelReached',
   }
 
-  enum StatsThreshold {
-    cpm = 150,
-    errors = 5,
-  }
-
-  const hasMetThresHold = cpm > StatsThreshold.cpm && errors < StatsThreshold.errors
-
-  const getSummaryMessages = ():[string, string] => {
-    if(hasMetThresHold)
-      return ['Level Completed!', '']
-    if (errors > StatsThreshold.errors) return ['Oops! Too many typos', `Need less than ${StatsThreshold.errors} errors`]
-    return ['Oops! Too slow', `Need a CPM greater than ${StatsThreshold.cpm}`]
-  }
-
   const initialStartHandler = (e: MouseEvent | React.MouseEvent) => {
     e.preventDefault()
     const lastLevel = localStorage.getItem(Local.LAST_LEVEL_REACHED)
@@ -81,8 +67,6 @@ const App: React.FC = () => {
           cpm={cpm}
           redoLevelHandler={redoLevelHandler}
           nextLevelHandler={nextLevelHandler}
-          isNextLevelDisabled={!hasMetThresHold}
-          message={getSummaryMessages()}
         />
       )}
     </>

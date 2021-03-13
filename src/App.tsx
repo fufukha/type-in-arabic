@@ -11,6 +11,12 @@ import {
   hasStartedSelector,
 } from './state/selectors'
 import { startSession, nextLevel } from './state/actions'
+import { 
+  Box, 
+  Typography,
+  Button,
+} from '@material-ui/core'
+import { makeStyles, Theme } from '@material-ui/core'
 
 const App: React.FC = () => {
   const dispatch = useDispatch()
@@ -47,10 +53,28 @@ const App: React.FC = () => {
     }
   }, [level, Local])
 
+  const useStyles = makeStyles(({ palette, typography }: Theme) => ({
+    landingPage: {
+      backgroundColor: palette.primary.main,
+      height: '100vh',
+    },
+    landingPage_H2: {
+      fontFamily: 'Amaranth, Roboto, sans serif',
+      whiteSpace: 'pre-line',
+    },
+  }))
+
+  const classes = useStyles()
+
   return (
     <>
       {!hasStarted && !isTaskCompleted && (
-        <button onClick={initialStartHandler}>START</button>
+        <Box className={classes.landingPage} component={'main'}>
+          <Typography className={classes.landingPage_H2} component="h1" variant="h2">
+            {`Learn typing.\nArabic Keyboard.`}
+          </Typography>
+          <Button onClick={initialStartHandler}>START</Button>
+        </Box>
       )}
 
       {hasStarted && !isTaskCompleted && (

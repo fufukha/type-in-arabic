@@ -73,7 +73,7 @@ const App: React.FC = () => {
           <Typography className={classes.landingPage_H2} component="h1" variant="h2">
             {`Learn typing.\nArabic Keyboard.`}
           </Typography>
-          <Button onClick={initialStartHandler}>START</Button>
+          <Button variant='contained' color='secondary' onClick={initialStartHandler}>Get started</Button>
         </Box>
       )}
 

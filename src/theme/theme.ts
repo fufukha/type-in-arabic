@@ -24,6 +24,18 @@ const theme = createMuiTheme({
       main: '#E9770F'
     }
   },
+  overrides: {
+    MuiButton: {
+      root: {
+        borderRadius: '10px',
+        paddingLeft: '30px',
+        paddingRight: '30px',
+      },
+      contained : {
+        boxShadow: 'none',
+      }
+    },
+  },
   props: {
     MuiTypography: {
       variantMapping: {

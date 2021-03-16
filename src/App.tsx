@@ -1,22 +1,21 @@
+import { faSquare } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Box, Button, makeStyles, Theme, Typography } from '@material-ui/core'
+import { TypeBackground } from '@material-ui/core/styles/createPalette'
+import { CSSProperties } from '@material-ui/core/styles/withStyles'
 import { useEffect } from 'react'
-import Keyfield from './components/Keyfield/index'
+import { useDispatch, useSelector } from 'react-redux'
 import Keyboard from './components/Keyboard/index'
+import Keyfield from './components/Keyfield/index'
+import Page from './components/Page'
 import Stats from './components/Stats/index'
-import { useSelector, useDispatch } from 'react-redux'
+import { nextLevel, startSession } from './state/actions'
 import {
-  errorsSelector,
-  cpmSelector,
-  isSessionCompletedSelector,
-  levelSelector,
-  hasStartedSelector,
+  cpmSelector, errorsSelector,
+  hasStartedSelector, isSessionCompletedSelector,
+  levelSelector
 } from './state/selectors'
-import { startSession, nextLevel } from './state/actions'
-import { 
-  Box, 
-  Typography,
-  Button,
-} from '@material-ui/core'
-import { makeStyles, Theme } from '@material-ui/core'
+import theme from './theme/theme'
 
 const App: React.FC = () => {
   const dispatch = useDispatch()
@@ -29,6 +28,7 @@ const App: React.FC = () => {
   enum Local {
     LAST_LEVEL_REACHED = 'lastLevelReached',
   }
+ 
 
   const initialStartHandler = (e: MouseEvent | React.MouseEvent) => {
     e.preventDefault()
@@ -54,44 +54,98 @@ const App: React.FC = () => {
   }, [level, Local])
 
   const useStyles = makeStyles(({ palette, typography }: Theme) => ({
-    landingPage: {
-      backgroundColor: palette.primary.main,
-      height: '100vh',
+    landingWrapper: {
+      position: 'relative',
+      width: '100%',
     },
-    landingPage_H2: {
+    landingContent: {
+      width: '75%',
+      margin: '0 auto',
+    },
+    landing_H2: {
       fontFamily: 'Amaranth, Roboto, sans serif',
+      fontSize: '64px',
+      color: 'white',
       whiteSpace: 'pre-line',
+    },
+    logo: {
+      fontSize: '16.7em',
+      color: 'white',
+      position: 'absolute',
+      right: '90px',
+      top: '-90px',
+      transform: 'rotate(-10.81deg)',
+      '& span': {
+        fontFamily: 'Markazi Text, Roboto, sans serif',
+        fontSize: '0.72em',
+        position: 'absolute',
+        top: '0',
+        right: '60px',
+      },
     },
   }))
 
+  const landingContainer: CSSProperties = {
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+  
   const classes = useStyles()
+
+  const backgroundColor = (background: string = '#fafafa', paper: string = '#fff' ): TypeBackground => ({
+    paper, 
+    default: background,
+  })
 
   return (
     <>
       {!hasStarted && !isTaskCompleted && (
-        <Box className={classes.landingPage} component={'main'}>
-          <Typography className={classes.landingPage_H2} component="h1" variant="h2">
-            {`Learn typing.\nArabic Keyboard.`}
-          </Typography>
-          <Button variant='contained' color='secondary' onClick={initialStartHandler}>Get started</Button>
-        </Box>
+        <Page backgroundColor={backgroundColor(theme.palette.secondary.main)} containerMaxWidth={'md'} containerStyles={landingContainer}>
+          <Box className={classes.landingWrapper}>
+            <Box className={classes.landingContent}>
+              <Box className={classes.logo}>
+                <FontAwesomeIcon icon={faSquare} color='white' />
+                <span>ع</span>
+              </Box>
+              <Typography
+                className={classes.landing_H2}
+                component='h1'
+                variant='h2'
+                gutterBottom
+              >
+                {`Learn typing.\nArabic Keyboard.`}
+              </Typography>
+              <Button
+                variant='contained'
+                color='primary'
+                onClick={initialStartHandler}
+              >
+                Get started
+              </Button>
+            </Box>
+          </Box>
+        </Page>
       )}
 
       {hasStarted && !isTaskCompleted && (
-        <>
+        <Page backgroundColor={backgroundColor(theme.palette.yellow.main)} containerMaxWidth={'md'} >
           <p>{`errors = ${errors} CPM = ${cpm}`}</p>
           <Keyfield />
           <Keyboard />
-        </>
+        </Page>
       )}
 
       {isTaskCompleted && (
-        <Stats
-          errors={errors}
-          cpm={cpm}
-          redoLevelHandler={redoLevelHandler}
-          nextLevelHandler={nextLevelHandler}
-        />
+        <Page backgroundColor={backgroundColor(theme.palette.blue.main)} containerMaxWidth={'md'}>
+          <Stats
+            errors={errors}
+            cpm={cpm}
+            redoLevelHandler={redoLevelHandler}
+            nextLevelHandler={nextLevelHandler}
+          />
+        </Page>
       )}
     </>
   )

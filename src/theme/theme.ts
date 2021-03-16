@@ -1,12 +1,12 @@
 import { createMuiTheme, Theme } from '@material-ui/core/styles'
 
-const theme = createMuiTheme({
+const theme: Theme = createMuiTheme({
   palette: {
     primary : {
-      main: '#7AC70D'
+      main: '#C70DA9'
     },
     secondary: {
-      main: '#C70DA9'
+      main: '#7AC70D'
     },
     yellow: {
       main: '#F9B113'
@@ -22,7 +22,7 @@ const theme = createMuiTheme({
     },
     orange: {
       main: '#E9770F'
-    }
+    },
   },
   overrides: {
     MuiButton: {
@@ -31,8 +31,13 @@ const theme = createMuiTheme({
         paddingLeft: '30px',
         paddingRight: '30px',
       },
-      contained : {
+      contained: {
         boxShadow: 'none',
+      },
+      containedPrimary: {
+        width: '290px',
+        fontSize: '24px',
+        fontWeight: 900,
       }
     },
   },

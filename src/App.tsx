@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Box, Button, makeStyles, Theme, Typography } from '@material-ui/core'
 import { TypeBackground } from '@material-ui/core/styles/createPalette'
 import { CSSProperties } from '@material-ui/core/styles/withStyles'
+import { AutoComplete } from 'material-ui'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Keyboard from './components/Keyboard/index'
@@ -88,8 +89,8 @@ const App: React.FC = () => {
   const landingContainer: CSSProperties = {
     height: '100%',
     display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    paddingTop: '15%',
+    margin: 'auto',
   }
   
   const classes = useStyles()

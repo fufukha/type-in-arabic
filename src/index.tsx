@@ -8,12 +8,12 @@ import theme from './theme/theme'
 
 render(
   <StrictMode>
-    <ThemeProvider theme={theme}>
-      <Provider store={store}>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
         <App />
-      </Provider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Provider>
   </StrictMode>,
   document.getElementById('root')
 )

@@ -1,4 +1,4 @@
-import { Box, Container, CssBaseline, ThemeProvider } from '@material-ui/core'
+import { Container, CssBaseline, ThemeProvider } from '@material-ui/core'
 import { useTheme } from '@material-ui/core/styles'
 import { TypeBackground } from '@material-ui/core/styles/createPalette'
 import { CSSProperties } from '@material-ui/core/styles/withStyles'
@@ -17,19 +17,15 @@ const Page: React.FC<PageProps> = ({
   containerMaxWidth,
   containerStyles,
 }) => {
-
   const theme = useTheme()
   theme.palette.background = backgroundColor
-  console.log(theme)
-  
+
   return (
-    <ThemeProvider theme={outerTheme => ({ ...outerTheme, ...theme })}>
-      <CssBaseline/>
-      <Box>
-        <Container style={containerStyles} maxWidth={containerMaxWidth}>
-          {(children as unknown) as ReactElement}
-        </Container>
-      </Box>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Container style={containerStyles} maxWidth={containerMaxWidth}>
+        {children as ReactElement}
+      </Container>
     </ThemeProvider>
   )
 }

@@ -91,12 +91,18 @@ export const levelsTheme: Theme = createMuiTheme({
       fontSize: '1.5em',
       textTransform: 'uppercase',
       fontWeight: 900,
+      color: '#fff',
     },
     body2: {
       fontFamily: 'Markazi Text, serif',
     },
   },
   overrides: {
+    MuiTypography: {
+      gutterBottom: {
+        marginBottom: '1em',
+      },
+    },
     MuiButton: {
       root: {
         borderRadius: '10px',

@@ -1,5 +1,5 @@
 import { Box, Button, makeStyles, Typography } from '@material-ui/core'
-import React, { CSSProperties } from 'react'
+import { CSSProperties } from 'react'
 import Logo from '../Logo/Logo'
 import Page from '../Page'
 import { landingTheme } from '../../theme/theme'

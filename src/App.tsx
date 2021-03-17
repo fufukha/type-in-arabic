@@ -13,8 +13,10 @@ import {
   isSessionCompletedSelector,
   levelSelector,
 } from './state/selectors'
-import { levelsTheme, statSummaryTheme } from './theme/theme'
+import { statSummaryTheme } from './theme/theme'
 import Landing from './components/Landing'
+import Levels from './components/Levels'
+import { makeStyles } from '@material-ui/core'
 
 const App: React.FC = () => {
   const dispatch = useDispatch()
@@ -51,14 +53,6 @@ const App: React.FC = () => {
     }
   }, [level, Local])
 
-  const backgroundColor = (
-    background: string = '#fafafa',
-    paper: string = '#fff'
-  ): TypeBackground => ({
-    paper,
-    default: background,
-  })
-
   return (
     <>
       {!hasStarted && !isTaskCompleted && (
@@ -66,14 +60,7 @@ const App: React.FC = () => {
       )}
 
       {hasStarted && !isTaskCompleted && (
-        <Page
-          theme={levelsTheme}
-          containerMaxWidth={'md'}
-        >
-          <p>{`errors = ${errors} CPM = ${cpm}`}</p>
-          <Keyfield />
-          <Keyboard />
-        </Page>
+        <Levels />
       )}
 
       {isTaskCompleted && (

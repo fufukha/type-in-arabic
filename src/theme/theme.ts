@@ -65,6 +65,9 @@ export const levelsTheme: Theme = createMuiTheme({
     secondary: {
       main: '#F9B113',
     },
+    purple: {
+      main: '#C70DA9',
+    },
     blue: {
       main: '#18BAED',
     },
@@ -101,7 +104,7 @@ export const levelsTheme: Theme = createMuiTheme({
     MuiDialogTitle: {
       root: {
         textAlign: 'center',
-      }
+      },
     },
     MuiTypography: {
       gutterBottom: {

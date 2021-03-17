@@ -7,6 +7,7 @@ declare module '@material-ui/core/styles/createPalette' {
     teal?: PaletteColorOptions
     orange?: PaletteColorOptions
     red?: PaletteColorOptions
+    purple?:  PaletteColorOptions
   }
 
   interface Palette {
@@ -14,6 +15,7 @@ declare module '@material-ui/core/styles/createPalette' {
     yellow: PaletteColor
     teal: PaletteColor
     orange: PaletteColor
+    purple: PaletteColor
     red: PaletteColor
   }
 }

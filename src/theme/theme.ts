@@ -13,7 +13,7 @@ export const landingTheme: Theme = createMuiTheme({
     },
     text: {
       primary: '#fff',
-    }
+    },
   },
   typography: {
     h1: {
@@ -24,7 +24,7 @@ export const landingTheme: Theme = createMuiTheme({
       fontFamily: 'Amaranth, Roboto, sans serif',
       fontSize: '4.572em',
       whiteSpace: 'pre-line',
-    }
+    },
   },
   overrides: {
     MuiButton: {
@@ -84,7 +84,7 @@ export const levelsTheme: Theme = createMuiTheme({
     background: {
       paper: '#E5E7EC',
       default: '#F9B113',
-    }
+    },
   },
   typography: {
     body1: {
@@ -93,8 +93,8 @@ export const levelsTheme: Theme = createMuiTheme({
       fontWeight: 900,
     },
     body2: {
-      fontFamily: 'Markazi Text, serif'
-    }
+      fontFamily: 'Markazi Text, serif',
+    },
   },
   overrides: {
     MuiButton: {
@@ -147,13 +147,13 @@ export const statSummaryTheme: Theme = createMuiTheme({
       fontFamily: 'Amaranth, Roboto, sans serif',
     },
     subtitle1: {
-      color: '#fff', 
+      color: '#fff',
       textTransform: 'uppercase',
     },
     subtitle2: {
-      color: '#fff', 
+      color: '#fff',
       textTransform: 'uppercase',
-    }
+    },
   },
   overrides: {
     MuiButton: {

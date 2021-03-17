@@ -11,7 +11,7 @@ interface LogoProps {
   marginTop?: string
 }
 
-const Logo: React.FC<LogoProps> = ({ sizePx, color, marginTop }) => {
+const Logo: React.FC<LogoProps> = ({ sizePx, color, marginTop = '-13%' }) => {
   const logoStyles: CSSProperties = {
     fontSize: `${sizePx}px`,
     transform: 'rotate(-10.81deg)',
@@ -20,7 +20,7 @@ const Logo: React.FC<LogoProps> = ({ sizePx, color, marginTop }) => {
     color,
     fontSize: `${sizePx * 0.72}px`,
     fontFamily: 'Markazi Text, Roboto, sans serif',
-    marginTop: '-13%',
+    marginTop,
   }
 
   return (

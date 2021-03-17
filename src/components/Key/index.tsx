@@ -1,8 +1,8 @@
-import { KeyData } from './key-types'
+import { KeyData, KeySize, KeyAlignment, KeyZone } from './key-types'
 import { useSelector } from 'react-redux'
 import { charSelector } from '../../state/selectors'
 import classnames from 'classnames'
-import styles from './Key.module.css'
+import { Paper, makeStyles } from '@material-ui/core'
 
 type KeyProps = {
   data: KeyData
@@ -11,20 +11,93 @@ type KeyProps = {
 const Key: React.FC<KeyProps> = ({ data }) => {
   const pressedKey = useSelector(charSelector)
   const { size, align, value, keyName, lang, zone } = data
+  const displayValue = (value === 'opt-left' || value === 'opt-right') ? '' : value
+
+  const useStyles = makeStyles(({ palette, typography }) => ({
+
+    key : {
+      display: 'flex',
+      margin: '1.5px',
+      padding: '5px 10px',
+      '&[lang="ar"]': {
+        fontFamily: typography.h6.fontFamily,
+        fontSize: '1.5em',
+      },
+      '&[lang="en"]': {
+        fontSize: '1em',
+      },
+    },
+    zone1: {
+      background: palette.purple.main,
+    },
+    zone2: {
+      background: palette.teal.main,
+    },
+    zone3: {
+      background: palette.secondary.main,
+    },
+    zone4: {
+      background: palette.red.main,
+    },
+    zone5: {
+      background: palette.blue.main,
+    },
+    zone6: {
+      background: palette.grey['100'],
+    },
+    zone7: {
+      background: palette.grey['200']
+    },
+    sm: {
+      gridColumn: 'auto / span 4',
+    },
+    med: {
+      gridColumn: 'auto / span 6',
+    },
+    lg: {
+      gridColumn:' auto / span 7',
+    },
+    xl: {
+      gridColumn: 'auto / span 9',
+    },
+    space: {
+      gridColumn: 'auto / span 20',
+    },
+    optLeft: {
+      gridColumn: 'auto / span 17',
+    },
+    optRight: {
+      gridColumn: 'auto/span 21',
+    },
+    left: {
+      justifyContent: 'flex-start',
+      alignItems: 'flex-end',
+    },
+    right: {
+      justifyContent: 'flex-end',
+      alignItems: 'flex-end',
+    },
+    center: {
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  }))
+
+  const classes = useStyles()
 
   return (
-    <div
+    <Paper
       lang={lang}
+      elevation={2}
       className={classnames(
-        styles.key,
-        styles[`key_${size}`],
-        styles[`key_${align}Align`],
-        styles[`key_zone${zone}`],
-        { [styles.pressed]: keyName === pressedKey }
+        classes.key,
+        classes[`${size}` as KeySize],
+        classes[`${align}` as KeyAlignment ],
+        classes[`${zone}` as KeyZone],
       )}
     >
-      {value}
-    </div>
+      {displayValue}
+    </Paper>
   )
 }
 

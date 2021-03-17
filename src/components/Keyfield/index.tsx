@@ -1,10 +1,13 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { inputChar as inputCharAction } from '../../state/actions'
 import { promptSelector, indexSelector } from '../../state/selectors'
 import { makeStyles, Paper, Typography } from '@material-ui/core'
+import AlertKeyboard from '../AlertKeyboard'
 
 const Keyfield: React.FC = () => {
+  const [isArabicKeyboard, setIsArabicKeyboard] = useState(true)
+
   const dispatch = useDispatch()
   const index = useSelector(indexSelector)
   const prompt = useSelector(promptSelector)
@@ -51,8 +54,9 @@ const Keyfield: React.FC = () => {
 
     if (isArabic(e.key) || isSystemEditKey(e.key)) {
       dispatch(inputCharAction(e.key, new Date().getTime()))
+      setIsArabicKeyboard(true)
     } else {
-      alert('Are you sure you are using an Arabic Keyboard? Switch now before pressing OK')
+      setIsArabicKeyboard(false)
     }
   }
 
@@ -86,9 +90,19 @@ const Keyfield: React.FC = () => {
   const classes = useStyles()
 
   return (
-    <Paper className={classes.field} variant='outlined' onKeyDown={handleOnKeydown}>
-      <Typography variant='h6'>{input}</Typography>
-    </Paper>
+    <>
+      {isArabicKeyboard ? (
+        <Paper
+          className={classes.field}
+          variant='outlined'
+          onKeyDown={handleOnKeydown}
+        >
+          <Typography variant='h6'>{input}</Typography>
+        </Paper>
+      ) : (
+        <AlertKeyboard onClose={() => setIsArabicKeyboard(true)} />
+      )}
+    </>
   )
 }
 

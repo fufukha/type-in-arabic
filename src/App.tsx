@@ -13,7 +13,7 @@ import {
   isSessionCompletedSelector,
   levelSelector,
 } from './state/selectors'
-import theme from './theme/theme'
+import { levelsTheme, statSummaryTheme } from './theme/theme'
 import Landing from './components/Landing'
 
 const App: React.FC = () => {
@@ -67,7 +67,7 @@ const App: React.FC = () => {
 
       {hasStarted && !isTaskCompleted && (
         <Page
-          backgroundColor={backgroundColor(theme.palette.yellow.main)}
+          theme={levelsTheme}
           containerMaxWidth={'md'}
         >
           <p>{`errors = ${errors} CPM = ${cpm}`}</p>
@@ -78,7 +78,7 @@ const App: React.FC = () => {
 
       {isTaskCompleted && (
         <Page
-          backgroundColor={backgroundColor(theme.palette.blue.main)}
+          theme={statSummaryTheme}
           containerMaxWidth={'md'}
         >
           <Stats

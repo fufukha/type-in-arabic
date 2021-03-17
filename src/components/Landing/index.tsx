@@ -1,9 +1,8 @@
 import { Box, Button, makeStyles, Typography } from '@material-ui/core'
-import { TypeBackground } from '@material-ui/core/styles/createPalette'
 import React, { CSSProperties } from 'react'
 import Logo from '../Logo/Logo'
 import Page from '../Page'
-import theme from '../../theme/theme'
+import { landingTheme } from '../../theme/theme'
 
 interface Props {
   getStarted: (e: MouseEvent | React.MouseEvent) => void
@@ -24,12 +23,6 @@ export const Landing: React.FC<Props> = ({ getStarted }) => {
       width: '75%',
       margin: '0 auto',
     },
-    landing_H2: {
-      fontFamily: 'Amaranth, Roboto, sans serif',
-      fontSize: '64px',
-      color: 'white',
-      whiteSpace: 'pre-line',
-    },
   }))
 
   const landingContainer: CSSProperties = {
@@ -41,26 +34,18 @@ export const Landing: React.FC<Props> = ({ getStarted }) => {
 
   const classes = useStyles()
 
-  const backgroundColor = (
-    background: string = '#fafafa',
-    paper: string = '#fff'
-  ): TypeBackground => ({
-    paper,
-    default: background,
-  })
-
   return (
     <Page
-      backgroundColor={backgroundColor(theme.palette.secondary.main)}
+      theme={landingTheme}
       containerMaxWidth={'md'}
       containerStyles={landingContainer}
     >
       <Box className={classes.landingWrapper}>
         <Box className={classes.landingContent}>
           <Typography
-            className={classes.landing_H2}
             component='h1'
             variant='h2'
+            color='textPrimary'
             gutterBottom
           >
             {`Learn typing.\nArabic Keyboard.`}

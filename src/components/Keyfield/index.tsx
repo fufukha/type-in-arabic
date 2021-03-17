@@ -22,11 +22,11 @@ const Keyfield: React.FC = () => {
   const isArabic = (key: string) => {
     const keyUtf16 = key.codePointAt(0)!
     if (
-			(keyUtf16 >= 1536 && keyUtf16 <= 1791) ||
-			(keyUtf16 >= 43 && keyUtf16 <= 46) ||
-			keyUtf16 === 61 ||
-			keyUtf16 === 92 ||
-			keyUtf16 === 33 ||
+      (keyUtf16 >= 1536 && keyUtf16 <= 1791) ||
+      (keyUtf16 >= 43 && keyUtf16 <= 46) ||
+      keyUtf16 === 61 ||
+      keyUtf16 === 92 ||
+      keyUtf16 === 33 ||
       keyUtf16 === 124
     ) {
       return true
@@ -78,13 +78,12 @@ const Keyfield: React.FC = () => {
         animationName: 'cursor',
         animationDuration: '1.5s',
         animationIterationCount: 'infinite',
-      }
+      },
     },
     '@keyframes cursor': {
-      '0%,50%': {borderLeftColor: 'rgba(0, 0, 0, 1)'},
-      '51%,100%': {borderLeftColor: 'rgba(0, 0, 0, 0)'},
-    }, 
-    
+      '0%,50%': { borderLeftColor: 'rgba(0, 0, 0, 1)' },
+      '51%,100%': { borderLeftColor: 'rgba(0, 0, 0, 0)' },
+    },
   }))
 
   const classes = useStyles()

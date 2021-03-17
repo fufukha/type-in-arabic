@@ -5,6 +5,7 @@ import { levelsTheme } from '../../theme/theme'
 import Page from '../Page'
 import Keyfield from '../Keyfield'
 import Keyboard from '../Keyboard'
+import { CSSProperties } from '@material-ui/core/styles/withStyles'
 
 interface Props {}
 
@@ -15,14 +16,20 @@ const Levels: React.FC<Props> = () => {
   const useStyles = makeStyles(() => ({
     statBar: {
       width: '50%',
-      margin: '100px auto 0',
+      marginTop: '100px',
     },
   }))
+
+  const containerStyles: CSSProperties = {
+    display: 'flex', 
+    alignItems: 'center', 
+    flexDirection: 'column',
+  }
 
   const classes = useStyles()
 
   return (
-    <Page theme={levelsTheme} containerMaxWidth={'md'}>
+    <Page theme={levelsTheme} containerMaxWidth={'md'} containerStyles={containerStyles}>
       <Grid className={classes.statBar} container justify='space-between'>
         <Grid item xs={3}>
           <Typography gutterBottom component={'h1'} variant={'body1'}>

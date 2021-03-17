@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { inputChar as inputCharAction } from '../../state/actions'
 import { promptSelector, indexSelector } from '../../state/selectors'
-import styles from './Keyfield.module.css'
+import { makeStyles, Paper, Typography } from '@material-ui/core'
 
 const Keyfield: React.FC = () => {
   const dispatch = useDispatch()
@@ -61,10 +61,22 @@ const Keyfield: React.FC = () => {
     return () => document.removeEventListener('keydown', handleOnKeydown)
   })
 
+  const useStyles = makeStyles(() => ({
+    field: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+      padding: '0 24px',
+      marginBottom: '40px',
+    },
+  }))
+
+  const classes = useStyles()
+
   return (
-    <div className={styles.keyfieldContainer} onKeyDown={handleOnKeydown}>
-      <div>{input}</div>
-    </div>
+    <Paper className={classes.field} variant='outlined' onKeyDown={handleOnKeydown}>
+      <Typography variant='h6'>{input}</Typography>
+    </Paper>
   )
 }
 

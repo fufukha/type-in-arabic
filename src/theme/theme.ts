@@ -82,7 +82,7 @@ export const levelsTheme: Theme = createMuiTheme({
       secondary: '#fff',
     },
     background: {
-      paper: '#E5E7EC',
+      paper: '#fff',
       default: '#F9B113',
     },
   },
@@ -93,8 +93,9 @@ export const levelsTheme: Theme = createMuiTheme({
       fontWeight: 900,
       color: '#fff',
     },
-    body2: {
+    h6: {
       fontFamily: 'Markazi Text, serif',
+      fontSize: '3.7em',
     },
   },
   overrides: {
@@ -116,18 +117,6 @@ export const levelsTheme: Theme = createMuiTheme({
         width: '290px',
         fontSize: '24px',
         fontWeight: 900,
-      },
-    },
-  },
-  props: {
-    MuiTypography: {
-      variantMapping: {
-        h1: 'h2',
-        h2: 'h3',
-        h3: 'h4',
-        h4: 'h5',
-        h5: 'h6',
-        h6: 'h6',
       },
     },
   },

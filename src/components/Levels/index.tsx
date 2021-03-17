@@ -32,12 +32,12 @@ const Levels: React.FC<Props> = () => {
     <Page theme={levelsTheme} containerMaxWidth={'md'} containerStyles={containerStyles}>
       <Grid className={classes.statBar} container justify='space-between'>
         <Grid item xs={3}>
-          <Typography gutterBottom component={'h1'} variant={'body1'}>
+          <Typography gutterBottom component={'h1'} variant={'h5'}>
             {`Typos ${errors}`}
           </Typography>
         </Grid>
         <Grid item xs={3}>
-          <Typography gutterBottom component={'h1'} variant={'body1'}>
+          <Typography gutterBottom component={'h1'} variant={'h5'}>
             {`CPM ${cpm}`}
           </Typography>
         </Grid>

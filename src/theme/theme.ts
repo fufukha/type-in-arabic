@@ -79,7 +79,6 @@ export const levelsTheme: Theme = createMuiTheme({
     },
     text: {
       primary: '#000',
-      secondary: '#fff',
     },
     background: {
       paper: '#fff',
@@ -87,7 +86,7 @@ export const levelsTheme: Theme = createMuiTheme({
     },
   },
   typography: {
-    body1: {
+    h5: {
       fontSize: '1.5em',
       textTransform: 'uppercase',
       fontWeight: 900,
@@ -99,6 +98,11 @@ export const levelsTheme: Theme = createMuiTheme({
     },
   },
   overrides: {
+    MuiDialogTitle: {
+      root: {
+        textAlign: 'center',
+      }
+    },
     MuiTypography: {
       gutterBottom: {
         marginBottom: '1em',

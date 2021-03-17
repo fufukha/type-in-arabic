@@ -1,6 +1,6 @@
-type KeySize = 'sm' | 'med' | 'lg' | 'xl'
-type KeyAlignment = 'left' | 'right' | 'center'
-type KeyZone = 1 | 2 | 3 | 4 | 5 | 6
+export type KeySize = 'sm' | 'med' | 'lg' | 'xl'
+export type KeyAlignment = 'left' | 'right' | 'center'
+export type KeyZone = 'zone1' | 'zone2' | 'zone3' | 'zone4' | 'zone5' | 'zone6' | 'zone7'
 type KeyLang = 'en' | 'ar'
 
 export interface KeyData {

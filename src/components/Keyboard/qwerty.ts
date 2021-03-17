@@ -6,27 +6,26 @@ const qwerty: string[] = [
   'opt-left', ' ', 'opt-right'
 ];
 
-const zone1: string[] = ['ذ', '١', 'ض', 'ش', 'ئ',
-                '٠', '-', '=', 'ح', 'ج', 'د', '\\',
+const zone1: string[] = ['ذ','١','٢' ,'ض', 'ش', 'ئ',
+                '٠', '-', '=', 'ح', 'ج', 'د',
                 'ك', 'ط', 'ظ']
-const zone2: string[] = ['٢', 'ص', 'س', 'ء',
+const zone2: string[] = ['٣', 'ص', 'س', 'ء',
               '٩', 'خ', 'م' ,'ز']
-const zone3: string[] = ['٣','ث', 'ي', 'ؤ','٨', 'ه', 'ن', 'و']
-const zone4: string[] = ['٤', 'ق', 'ب', 'ر',
+const zone3: string[] = ['٤','ث', 'ي', 'ؤ','٨', 'ه', 'ن', 'و', ]
+const zone4: string[] = ['٤', 'ق', 'ب', 'ر', '٦',
                '٥', 'ف', 'ل', 'لا']
 const zone5: string[] = ['٦', 'غ', 'ا', 'ى',
                '٧', 'ع', 'ت', 'ة']
+const zone6: string[] = [' ']
 
 const getZone = (key: string) => {
- if(zone1.includes(key)) return 1
- if(zone1.includes(key)) return 1
- if(zone1.includes(key)) return 1
- if(zone2.includes(key)) return 2
- if(zone3.includes(key)) return 3
- if(zone4.includes(key)) return 4
- if(zone5.includes(key)) return 5
- if(key === ' ') return 6
- return 7
+ if(zone1.includes(key)) return 'zone1'
+ if(zone2.includes(key)) return 'zone2'
+ if(zone3.includes(key)) return 'zone3'
+ if(zone4.includes(key)) return 'zone4'
+ if(zone5.includes(key)) return 'zone5'
+ if(zone6.includes(key)) return 'zone6'
+ return 'zone7'
 }
 
 const getValue = (key: string) => {

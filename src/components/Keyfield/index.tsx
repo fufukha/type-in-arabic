@@ -90,15 +90,15 @@ const Keyfield: React.FC = () => {
 
   return (
     <>
-      {isArabicKeyboard ? (
-        <Paper
-          className={classes.field}
-          variant='outlined'
-          onKeyDown={handleOnKeydown}
-        >
-          <Typography variant='h6'>{input}</Typography>
-        </Paper>
-      ) : (
+      <Paper
+        className={classes.field}
+        variant='outlined'
+        onKeyDown={handleOnKeydown}
+      >
+        <Typography variant='h6'>{input}</Typography>
+      </Paper>
+
+      {!isArabicKeyboard && (
         <AlertKeyboard onClose={() => setIsArabicKeyboard(true)} />
       )}
     </>

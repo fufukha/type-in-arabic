@@ -1,6 +1,4 @@
 import { KeyData, KeySize, KeyAlignment, KeyZone } from './key-types'
-import { useSelector } from 'react-redux'
-import { charSelector } from '../../state/selectors'
 import classnames from 'classnames'
 import { Paper, makeStyles } from '@material-ui/core'
 
@@ -9,16 +7,15 @@ type KeyProps = {
 }
 
 const Key: React.FC<KeyProps> = ({ data }) => {
-  const pressedKey = useSelector(charSelector)
-  const { size, align, value, keyName, lang, zone } = data
+  const { size, align, value, lang, zone } = data
   const displayValue = (value === 'opt-left' || value === 'opt-right') ? '' : value
 
   const useStyles = makeStyles(({ palette, typography }) => ({
-
     key : {
       display: 'flex',
       margin: '1.5px',
       padding: '5px 10px',
+      cursor: 'default',
       '&[lang="ar"]': {
         fontFamily: typography.h6.fontFamily,
         fontSize: '1.5em',

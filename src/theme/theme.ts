@@ -148,6 +148,9 @@ export const statSummaryTheme: Theme = createMuiTheme({
     warning: {
       main: '#F9B113',
     },
+    background: {
+      default: '#18BAED',
+    },
   },
   typography: {
     h1: {

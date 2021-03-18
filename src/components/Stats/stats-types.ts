@@ -6,10 +6,10 @@ export type StatsProps = {
 }
 
 export enum StatsThreshold {
-  cpm = 149,
+  cpm = 130,
   errors = 5,
-  cpmSuper = 274,
-  cpmGreat = 199,
+  cpmSuper = 200,
+  cpmGreat = 150,
 }
 
 export type SummaryMessage = {

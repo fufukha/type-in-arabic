@@ -23,12 +23,12 @@ const Stats: React.FC<StatsProps> = ({
   const summaryMessages = (): SummaryMessage => {
     if (hasMetThresHold) return { status: 'Level Completed' }
 
-    if (errors > StatsThreshold.errors) {
+    if (errors >= StatsThreshold.errors) {
       return {
         status: 'Oops! Too many typos',
         description: `Must have less than ${StatsThreshold.errors} typos`,
       }
-    }
+    } 
 
     return {
       status: 'Oops! Too slow',
@@ -36,8 +36,8 @@ const Stats: React.FC<StatsProps> = ({
     }
   }
 
-  const hasEarnBadge =
-    (cpm > StatsThreshold.cpm && errors === 0) || cpm > StatsThreshold.cpmGreat
+  const hasEarnBadge = hasMetThresHold && (
+    (cpm > StatsThreshold.cpm && errors === 0) || cpm > StatsThreshold.cpmGreat)
 
   const badgeName = (): IconName => {
     if (cpm > StatsThreshold.cpmSuper && errors === 0) {

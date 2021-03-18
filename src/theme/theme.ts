@@ -101,6 +101,14 @@ export const levelsTheme: Theme = createMuiTheme({
     },
   },
   overrides: {
+    MuiContainer: {
+      maxWidthMd: {
+        '@media (min-width: 960px)': {
+          maxWidth: '90%'
+        },
+        maxWidth: '90%',
+      }
+    },
     MuiDialogTitle: {
       root: {
         textAlign: 'center',

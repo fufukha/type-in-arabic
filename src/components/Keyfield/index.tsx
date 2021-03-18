@@ -68,9 +68,10 @@ const Keyfield: React.FC = () => {
   const useStyles = makeStyles(() => ({
     field: {
       display: 'flex',
-      justifyContent: 'flex-end',
+      width: '100%',
+      justifyContent: 'center',
       alignItems: 'center',
-      padding: '0 24px',
+      padding: '0 100px',
       marginBottom: '40px',
       '& span': {
         color: 'lightgrey',

@@ -1,8 +1,5 @@
-import { TypeBackground } from '@material-ui/core/styles/createPalette'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Keyboard from './components/Keyboard/index'
-import Keyfield from './components/Keyfield/index'
 import Page from './components/Page'
 import Stats from './components/Stats/index'
 import { nextLevel, startSession } from './state/actions'
@@ -16,7 +13,6 @@ import {
 import { statSummaryTheme } from './theme/theme'
 import Landing from './components/Landing'
 import Levels from './components/Levels'
-import { makeStyles } from '@material-ui/core'
 
 const App: React.FC = () => {
   const dispatch = useDispatch()

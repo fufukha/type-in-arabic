@@ -1,21 +1,46 @@
+import { useRef, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { KeyData, KeySize, KeyAlignment, KeyZone } from './key-types'
+import { charSelector } from '../../state/selectors'
 import classnames from 'classnames'
-import { Paper, makeStyles } from '@material-ui/core'
+import { makeStyles, ButtonBase } from '@material-ui/core'
 
 type KeyProps = {
   data: KeyData
 }
 
 const Key: React.FC<KeyProps> = ({ data }) => {
-  const { size, align, value, lang, zone } = data
-  const displayValue = (value === 'opt-left' || value === 'opt-right') ? '' : value
+  const { size, align, value, lang, zone, keyName } = data
+  const displayValue =
+    value === 'opt-left' || value === 'opt-right' ? '' : value
+  const pressedKey = useSelector(charSelector)
 
-  const useStyles = makeStyles(({ palette, typography }) => ({
-    key : {
+  const keyBtn = useRef<HTMLDivElement>(null)
+  const blurTimer = setTimeout(() => {
+    if(keyBtn.current !== null) {
+      keyBtn.current.blur()
+    }
+  }, 400)
+
+  useEffect(() => {
+    if (pressedKey === keyName && keyBtn.current !== null) {
+      keyBtn.current.focus()
+    }
+    return () => clearTimeout(blurTimer)
+  })
+
+  const useStyles = makeStyles(({ palette, typography, shadows, shape, transitions }) => ({
+    key: {
       display: 'flex',
       margin: '1.5px',
       padding: '5px 10px',
       cursor: 'default',
+      boxShadow: shadows['2'],
+      borderRadius: shape.borderRadius,
+      '&:focus-visible': {
+        boxShadow: shadows['0'],
+        transition: `box-shadow ${transitions.easing.easeOut} ${transitions.duration.standard}`
+      },
       '&[lang="ar"]': {
         fontFamily: typography.h6.fontFamily,
         fontSize: '1.5em',
@@ -23,6 +48,10 @@ const Key: React.FC<KeyProps> = ({ data }) => {
       '&[lang="en"]': {
         fontSize: '1em',
       },
+    },
+    '.focus': {
+      boxShadow: shadows['0'],
+      // transition: `box-shadow ${transitions.easing.easeOut}`
     },
     zone1: {
       background: palette.purple.main,
@@ -43,7 +72,7 @@ const Key: React.FC<KeyProps> = ({ data }) => {
       background: palette.grey['100'],
     },
     zone7: {
-      background: palette.grey['200']
+      background: palette.grey['200'],
     },
     sm: {
       gridColumn: 'auto / span 4',
@@ -52,7 +81,7 @@ const Key: React.FC<KeyProps> = ({ data }) => {
       gridColumn: 'auto / span 6',
     },
     lg: {
-      gridColumn:' auto / span 7',
+      gridColumn: ' auto / span 7',
     },
     xl: {
       gridColumn: 'auto / span 9',
@@ -83,18 +112,17 @@ const Key: React.FC<KeyProps> = ({ data }) => {
   const classes = useStyles()
 
   return (
-    <Paper
+    <ButtonBase
       lang={lang}
-      elevation={2}
-      className={classnames(
-        classes.key,
-        classes[`${size}` as KeySize],
-        classes[`${align}` as KeyAlignment ],
-        classes[`${zone}` as KeyZone],
-      )}
+      component='div'
+      ref={keyBtn}
+      centerRipple
+      focusRipple
+      focusVisibleClassName={'focus'}
+      
     >
       {displayValue}
-    </Paper>
+    </ButtonBase>
   )
 }
 

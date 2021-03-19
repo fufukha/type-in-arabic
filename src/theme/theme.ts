@@ -97,7 +97,7 @@ export const levelsTheme: Theme = createMuiTheme({
     },
     h6: {
       fontFamily: 'Markazi Text, serif',
-      fontSize: '3.7em',
+      fontSize: '3.5em',
     },
   },
   overrides: {

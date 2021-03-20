@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { inputChar as inputCharAction } from '../../state/actions'
 import { promptSelector, indexSelector } from '../../state/selectors'
 import { makeStyles, Paper, Typography } from '@material-ui/core'
-import AlertKeyboard from '../AlertKeyboard'
+import { faGlobe } from '@fortawesome/free-solid-svg-icons'
+import Alert from '../Alert'
+import { AlertMessage } from '../../types/types'
 
 const Keyfield: React.FC = () => {
   const [isArabicKeyboard, setIsArabicKeyboard] = useState(true)
@@ -100,7 +102,10 @@ const Keyfield: React.FC = () => {
       </Paper>
 
       {!isArabicKeyboard && (
-        <AlertKeyboard onClose={() => setIsArabicKeyboard(true)} />
+        <Alert 
+          onClose={() => setIsArabicKeyboard(true)}
+          icon={faGlobe}
+          message={AlertMessage.keyboardError} />
       )}
     </>
   )

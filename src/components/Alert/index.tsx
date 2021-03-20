@@ -1,4 +1,3 @@
-import { faGlobe } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   Dialog,
@@ -9,13 +8,17 @@ import {
   Button,
   useTheme,
 } from '@material-ui/core'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { AlertMessage } from '../../types/types'
 
 interface Props {
   onClose: () => void
+  icon?: IconProp
+  message: AlertMessage
 }
 
-const AlertKeyboard: React.FC<Props> = ({ onClose }) => {
-  const { main } = useTheme().palette.secondary
+const Alert: React.FC<Props> = ({ onClose, message, icon }) => {
+  const { secondary } = useTheme().palette
 
   return (
     <Dialog
@@ -26,10 +29,12 @@ const AlertKeyboard: React.FC<Props> = ({ onClose }) => {
     >
       <DialogContent>
         <DialogTitle disableTypography>
-          <FontAwesomeIcon icon={faGlobe} size='2x' color={main} />
+          {icon && (
+            <FontAwesomeIcon icon={icon} size='2x' color={secondary.main} />
+          )}
         </DialogTitle>
         <DialogContentText id='alert-dialog-description'>
-          Please change your keyboard layout to Arabic.
+          {message}
         </DialogContentText>
       </DialogContent>
       <DialogActions>
@@ -41,4 +46,4 @@ const AlertKeyboard: React.FC<Props> = ({ onClose }) => {
   )
 }
 
-export default AlertKeyboard
+export default Alert

@@ -23,6 +23,12 @@ export const landingTheme: Theme = createMuiTheme({
     h2: {
       fontFamily: 'Amaranth, Roboto, sans serif',
       fontSize: '4.572em',
+      '@media (max-width: 960px)': {
+        fontSize: '3em',
+      },
+      '@media (max-width: 600px)': {
+        fontSize: '2em',
+      },
       whiteSpace: 'pre-line',
     },
   },
@@ -37,8 +43,12 @@ export const landingTheme: Theme = createMuiTheme({
         boxShadow: 'none',
       },
       containedPrimary: {
-        width: '290px',
+        width: '100%',
+        maxWidth: '290px',
         fontSize: '24px',
+        '@media (max-width: 600px)': {
+          fontSize: '0.8em',
+        },
         fontWeight: 900,
       },
     },
@@ -104,10 +114,10 @@ export const levelsTheme: Theme = createMuiTheme({
     MuiContainer: {
       maxWidthMd: {
         '@media (min-width: 960px)': {
-          maxWidth: '90%'
+          maxWidth: '90%',
         },
         maxWidth: '90%',
-      }
+      },
     },
     MuiDialogTitle: {
       root: {

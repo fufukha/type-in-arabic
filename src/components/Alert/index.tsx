@@ -9,7 +9,7 @@ import {
   useTheme,
 } from '@material-ui/core'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { AlertMessage } from '../../types/types'
+import { AlertMessage } from '../../types'
 
 interface Props {
   onClose: () => void

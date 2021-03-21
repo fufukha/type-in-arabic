@@ -5,7 +5,7 @@ import { promptSelector, indexSelector } from '../../state/selectors'
 import { makeStyles, Paper, Typography } from '@material-ui/core'
 import { faGlobe } from '@fortawesome/free-solid-svg-icons'
 import Alert from '../Alert'
-import { AlertMessage } from '../../types/types'
+import { AlertMessage } from '../../types'
 
 const Keyfield: React.FC = () => {
   const [isArabicKeyboard, setIsArabicKeyboard] = useState(true)

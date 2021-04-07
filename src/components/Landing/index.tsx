@@ -12,7 +12,7 @@ export const Landing: React.FC<Props> = ({ getStarted }) => {
 
   return (
     <Page
-      theme={landingTheme}
+      themeOptions={landingTheme}
       containerMaxWidth={'md'}
       containerStyles={container}
     >

@@ -1,6 +1,6 @@
-import { createMuiTheme, Theme } from '@material-ui/core/styles'
+import { ThemeOptions } from '@material-ui/core/styles'
 
-export const landingTheme: Theme = createMuiTheme({
+export const landingTheme: ThemeOptions = {
   palette: {
     primary: {
       main: '#C70DA9',
@@ -65,9 +65,9 @@ export const landingTheme: Theme = createMuiTheme({
       },
     },
   },
-})
+}
 
-export const levelsTheme: Theme = createMuiTheme({
+export const levelsTheme: ThemeOptions = {
   palette: {
     primary: {
       main: '#E5E7EC',
@@ -145,9 +145,9 @@ export const levelsTheme: Theme = createMuiTheme({
       },
     },
   },
-})
+}
 
-export const statSummaryTheme: Theme = createMuiTheme({
+export const statSummaryTheme: ThemeOptions = {
   palette: {
     primary: {
       main: '#18BAED',
@@ -207,4 +207,4 @@ export const statSummaryTheme: Theme = createMuiTheme({
       },
     },
   },
-})
+}

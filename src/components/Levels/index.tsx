@@ -29,7 +29,7 @@ const Levels: React.FC<Props> = () => {
   const classes = useStyles()
 
   return (
-    <Page theme={levelsTheme} containerMaxWidth={'md'} containerStyles={containerStyles}>
+    <Page themeOptions={levelsTheme} containerMaxWidth={'md'} containerStyles={containerStyles}>
       <Grid className={classes.statBar} container justify='space-between'>
         <Grid item xs={3}>
           <Typography gutterBottom component={'h1'} variant={'h5'}>

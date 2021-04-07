@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Page from './components/Page'
-import Stats from './components/Stats/index'
+import Stats from './components/Stats'
 import { nextLevel, startSession } from './state/actions'
 import {
   cpmSelector,
@@ -61,7 +61,7 @@ const App: React.FC = () => {
 
       {isTaskCompleted && (
         <Page
-          theme={statSummaryTheme}
+          themeOptions={statSummaryTheme}
           containerMaxWidth={'md'}
         >
           <Stats

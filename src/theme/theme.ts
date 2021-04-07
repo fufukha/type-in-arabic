@@ -127,6 +127,7 @@ export const levelsTheme: ThemeOptions = {
       maxWidthMd: {
         '@media (min-width: 960px)': {
           maxWidth: '90%',
+          minWidth: '1039px',
         },
         maxWidth: '90%',
       },

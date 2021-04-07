@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { inputChar as inputCharAction } from '../../state/actions'
-import { promptSelector, indexSelector } from '../../state/selectors'
-import { makeStyles, Paper, Typography } from '@material-ui/core'
 import { faGlobe } from '@fortawesome/free-solid-svg-icons'
-import Alert from '../Alert'
+import { Paper, Typography } from '@material-ui/core'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { inputChar as inputCharAction } from '../../state/actions'
+import { indexSelector, promptSelector } from '../../state/selectors'
 import { AlertMessage } from '../../types'
+import Alert from '../Alert'
+import { useStyles } from './styles'
 
 const Keyfield: React.FC = () => {
   const [isArabicKeyboard, setIsArabicKeyboard] = useState(true)
@@ -67,28 +68,6 @@ const Keyfield: React.FC = () => {
     return () => document.removeEventListener('keydown', handleOnKeydown)
   })
 
-  const useStyles = makeStyles(() => ({
-    field: {
-      display: 'flex',
-      width: '100%',
-      justifyContent: 'center',
-      alignItems: 'center',
-      padding: '0 100px',
-      marginBottom: '40px',
-      '& span': {
-        color: 'lightgrey',
-        borderLeft: '1px black solid',
-        animationName: 'cursor',
-        animationDuration: '1.5s',
-        animationIterationCount: 'infinite',
-      },
-    },
-    '@keyframes cursor': {
-      '0%,50%': { borderLeftColor: 'rgba(0, 0, 0, 1)' },
-      '51%,100%': { borderLeftColor: 'rgba(0, 0, 0, 0)' },
-    },
-  }))
-
   const classes = useStyles()
 
   return (
@@ -102,10 +81,11 @@ const Keyfield: React.FC = () => {
       </Paper>
 
       {!isArabicKeyboard && (
-        <Alert 
+        <Alert
           onClose={() => setIsArabicKeyboard(true)}
           icon={faGlobe}
-          message={AlertMessage.keyboardError} />
+          message={AlertMessage.keyboardError}
+        />
       )}
     </>
   )

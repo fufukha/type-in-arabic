@@ -25,7 +25,7 @@ export const useStyles = (status: Boolean, theme: Theme) =>
     },
     statContent: {},
     statistics: {
-      margin: '40px 0 20px 0',
+      margin: '20px 0 20px 0',
     },
     badge: {
       color: theme.palette.success.main,

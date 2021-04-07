@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Page from './components/Page'
 import Stats from './components/Stats'
 import { nextLevel, startSession } from './state/actions'
 import {
@@ -10,7 +9,6 @@ import {
   isSessionCompletedSelector,
   levelSelector,
 } from './state/selectors'
-import { statSummaryTheme } from './theme/theme'
 import Landing from './components/Landing'
 import Levels from './components/Levels'
 
@@ -55,22 +53,15 @@ const App: React.FC = () => {
         <Landing getStarted={initialStartHandler} />
       )}
 
-      {hasStarted && !isTaskCompleted && (
-        <Levels />
-      )}
+      {hasStarted && !isTaskCompleted && <Levels />}
 
       {isTaskCompleted && (
-        <Page
-          themeOptions={statSummaryTheme}
-          containerMaxWidth={'md'}
-        >
-          <Stats
-            errors={errors}
-            cpm={cpm}
-            redoLevelHandler={redoLevelHandler}
-            nextLevelHandler={nextLevelHandler}
-          />
-        </Page>
+        <Stats
+          errors={errors}
+          cpm={cpm}
+          redoLevelHandler={redoLevelHandler}
+          nextLevelHandler={nextLevelHandler}
+        />
       )}
     </>
   )

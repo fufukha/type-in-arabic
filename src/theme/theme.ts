@@ -8,6 +8,12 @@ export const landingTheme: ThemeOptions = {
     secondary: {
       main: '#7AC70D',
     },
+    success: {
+      main: '#7AC70D',
+    },
+    warning: {
+      main: '#F9B113',
+    },
     background: {
       default: '#7AC70D',
     },
@@ -90,6 +96,12 @@ export const levelsTheme: ThemeOptions = {
     orange: {
       main: '#E9770F',
     },
+    success: {
+      main: '#7AC70D',
+    },
+    warning: {
+      main: '#F9B113',
+    },
     text: {
       primary: '#000',
     },
@@ -150,7 +162,10 @@ export const levelsTheme: ThemeOptions = {
 export const statSummaryTheme: ThemeOptions = {
   palette: {
     primary: {
-      main: '#18BAED',
+      main: '#7AC70D',
+    },
+    secondary: {
+      main: '#F9B113',
     },
     success: {
       main: '#7AC70D',
@@ -169,16 +184,37 @@ export const statSummaryTheme: ThemeOptions = {
     h2: {
       fontFamily: 'Amaranth, Roboto, sans serif',
     },
-    subtitle1: {
+    h3: {
+      fontFamily: 'Amaranth, Roboto, sans serif',
+    },
+    h4: {
+      fontFamily: 'Amaranth, Roboto, sans serif',
+    },
+    h5: {
+      fontFamily: 'Amaranth, Roboto, sans serif',
+    },
+    h6: {
+      fontFamily: 'Amaranth, Roboto, sans serif',
+    },
+    caption: {
       color: '#fff',
       textTransform: 'uppercase',
+      fontWeight: 700,
     },
     subtitle2: {
       color: '#fff',
       textTransform: 'uppercase',
     },
   },
+  shape: {
+    borderRadius: 10,
+  },
   overrides: {
+    MuiContainer: {
+      maxWidthXs: {
+        width: '420px',
+      },
+    },
     MuiButton: {
       root: {
         borderRadius: '10px',
@@ -189,9 +225,7 @@ export const statSummaryTheme: ThemeOptions = {
         boxShadow: 'none',
       },
       containedPrimary: {
-        width: '290px',
-        fontSize: '24px',
-        fontWeight: 900,
+        fontSize: '0.875rem',
       },
     },
   },

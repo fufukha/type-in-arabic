@@ -13,6 +13,6 @@ export enum StatsThreshold {
 }
 
 export type SummaryMessage = {
-  status: 'Level Completed' | 'Oops! Too many typos' | 'Oops! Too slow'
+  status: 'Level Completed!' | 'Oops! Too many typos' | 'Oops! Too slow'
   description?: string
 }

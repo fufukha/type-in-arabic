@@ -100,7 +100,6 @@ const Stats: React.FC<StatsProps> = ({
               )}
             </Grid>
             <Grid
-              className={classes.statContent}
               item
               container
               xs={12}

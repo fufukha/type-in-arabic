@@ -16,7 +16,6 @@ const Page: React.FC<PageProps> = ({
   containerMaxWidth,
   containerStyles,
 }) => {
-
   return (
     <ThemeProvider theme={createMuiTheme(themeOptions)}>
       <CssBaseline />

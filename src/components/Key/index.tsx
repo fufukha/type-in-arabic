@@ -28,7 +28,6 @@ const Key: React.FC<KeyProps> = ({ data }) => {
   }, [userKeyInput, keyName])
 
   const classes = useStyles()
-  console.log(classes)
 
   return (
     <ButtonBase

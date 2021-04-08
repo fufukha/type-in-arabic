@@ -130,6 +130,7 @@ export const levelsTheme: ThemeOptions = {
           minWidth: '1039px',
         },
         maxWidth: '90%',
+        minWidth: '1039px',
       },
     },
     MuiDialogTitle: {

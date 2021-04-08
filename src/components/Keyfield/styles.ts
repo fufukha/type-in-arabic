@@ -4,6 +4,7 @@ export const useStyles = makeStyles(() => ({
   field: {
     display: 'flex',
     width: '100%',
+    minWidth: '991.5px',
     justifyContent: 'center',
     alignItems: 'center',
     padding: '0 60px',

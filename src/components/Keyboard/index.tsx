@@ -10,7 +10,7 @@ const Keyboard: React.FC = () => {
   const classes = useStyles()
 
   return (
-    <Grid className={classes.keyboard} container>
+    <Grid className={classes.keyboard} container data-testid='keyboard'>
       {keys}
     </Grid>
   )

@@ -76,6 +76,7 @@ const Keyfield: React.FC = () => {
         className={classes.field}
         variant='outlined'
         onKeyDown={handleOnKeydown}
+        data-testid='keyfield'
       >
         <Typography variant='h6'>{input}</Typography>
       </Paper>

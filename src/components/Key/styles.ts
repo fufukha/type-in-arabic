@@ -23,7 +23,6 @@ const useStyles = makeStyles(
     },
     '.focus': {
       boxShadow: shadows['0'],
-      // transition: `box-shadow ${transitions.easing.easeOut}`
     },
     zone1: {
       background: palette.purple.main,

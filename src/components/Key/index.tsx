@@ -1,20 +1,16 @@
 import { useRef, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { KeyData, KeySize, KeyAlignment, KeyZone } from './key-types'
+import { KeyProps, KeySize, KeyAlignment, KeyZone } from './key-types'
 import { charSelector } from '../../state/selectors'
 import classnames from 'classnames'
 import { ButtonBase } from '@material-ui/core'
 import useStyles from './styles'
 
-type KeyProps = {
-  data: KeyData
-}
-
 const Key: React.FC<KeyProps> = ({ data }) => {
   const { size, align, value, lang, zone, keyName } = data
   const displayValue =
     value === 'opt-left' || value === 'opt-right' ? '' : value
-    
+
   const userKeyInput = useSelector(charSelector)
   const keyBtn = useRef<HTMLDivElement>(null)
 
@@ -41,8 +37,8 @@ const Key: React.FC<KeyProps> = ({ data }) => {
       className={classnames(
         classes.key,
         classes[`${size}` as KeySize],
-        classes[`${align}` as KeyAlignment ],
-        classes[`${zone}` as KeyZone],
+        classes[`${align}` as KeyAlignment],
+        classes[`${zone}` as KeyZone]
       )}
       ref={keyBtn}
       centerRipple

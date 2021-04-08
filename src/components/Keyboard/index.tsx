@@ -1,4 +1,3 @@
-import { Grid } from '@material-ui/core'
 import Key from '../Key'
 import { getQwertyData } from './qwerty'
 import { useStyles } from './styles'
@@ -10,9 +9,9 @@ const Keyboard: React.FC = () => {
   const classes = useStyles()
 
   return (
-    <Grid className={classes.keyboard} container>
+    <div className={classes.keyboard}>
       {keys}
-    </Grid>
+    </div>
   )
 }
 

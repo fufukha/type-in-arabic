@@ -1,5 +1,10 @@
-import { useEffect } from 'react'
+import { faDesktop } from '@fortawesome/free-solid-svg-icons'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { AlertMessage } from '../src/types'
+import Landing from './components/Landing'
+import Levels from './components/Levels'
 import Stats from './components/Stats'
 import { nextLevel, startSession } from './state/actions'
 import {
@@ -7,12 +12,14 @@ import {
   errorsSelector,
   hasStartedSelector,
   isSessionCompletedSelector,
-  levelSelector,
+  levelSelector
 } from './state/selectors'
-import Landing from './components/Landing'
-import Levels from './components/Levels'
 
 const App: React.FC = () => {
+  const [displayAlert, setDisplayAlert] = useState(false)
+
+  const isDeviceValid = useMediaQuery('(min-width:1000px)')
+
   const dispatch = useDispatch()
   const errors = useSelector(errorsSelector)
   const cpm = useSelector(cpmSelector)
@@ -25,10 +32,14 @@ const App: React.FC = () => {
   }
 
   const initialStartHandler = (e: MouseEvent | React.MouseEvent) => {
-    e.preventDefault()
-    const lastLevel = localStorage.getItem(Local.LAST_LEVEL_REACHED)
-    const startLevel = lastLevel === null ? 0 : parseInt(lastLevel)
-    dispatch(startSession(startLevel))
+    if (!isDeviceValid) {
+      setDisplayAlert(true)
+    } else {
+      e.preventDefault()
+      const lastLevel = localStorage.getItem(Local.LAST_LEVEL_REACHED)
+      const startLevel = lastLevel === null ? 0 : parseInt(lastLevel)
+      dispatch(startSession(startLevel))
+    }
   }
 
   const redoLevelHandler = (e: MouseEvent | React.MouseEvent) => {
@@ -50,7 +61,15 @@ const App: React.FC = () => {
   return (
     <>
       {!hasStarted && !isTaskCompleted && (
-        <Landing getStarted={initialStartHandler} />
+        <>
+          <Landing
+            getStarted={initialStartHandler}
+            displayAlert={displayAlert}
+            onClose={() => setDisplayAlert(false)}
+            icon={faDesktop}
+            alertMessage={AlertMessage.deviceError}
+          />
+        </>
       )}
 
       {hasStarted && !isTaskCompleted && <Levels />}
